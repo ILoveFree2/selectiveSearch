@@ -7,7 +7,7 @@ is to run the **demo.m** file, and it will perform the selective search on singl
 
 the other way to use it
 ---------------------
-is to run the *testAllPicturesInDirectory.m* file and it will perform the selective search on
+is to run the **testAllPicturesInDirectory.m** file and it will perform the selective search on
 all the images in a directory, the result will also be written in the same directory
 
 
