@@ -11,11 +11,10 @@ is to run the *testAllPicturesInDirectory.m* file and it will perform the select
 all the images in a directory, the result will also be written in the same directory
 
 
+the original paper
+----------------
 - the original algorithm is found in http://homepages.inf.ed.ac.uk/juijling/#page=projects1
 - but the original implementation in matlab is partially encrypted, so I implementation my own 
 
-use the program like that in Matlab 
-    demo
-    testAllPicturesInDirectory
 
     
