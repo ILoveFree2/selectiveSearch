@@ -9,32 +9,45 @@
 clc;clear all;
 
 % the parameter you need to provide
-dirName = '../icdar1003/SceneTrialTest/ryoungt_05.08.2002';
 
 
-theDir = dir(dirName);
- 
-for i = 1:size(theDir,1)
-    if ~theDir(i).isdir
-        
-        
-        if theDir(i).bytes / 1024 < 800
-            
-            path = strcat(dirName,'/');
-            path = strcat(path,theDir(i).name);
-            
-            [boxes, height, width] = selectiveSearch(path);
-            
-            outputFileName = strcat(dirName,'/');
-            outputFileName = strcat(outputFileName, theDir(i).name(1:size(theDir(i).name,2)-4) );
-            outputFileName = strcat(outputFileName,'.txt');
-            
-     
-            fileID = fopen(outputFileName,'w');
-            fprintf(fileID,'%3d %3d\n',height,width);
-            fprintf(fileID,'%3d %3d %3d %3d\n',boxes');
-            fclose(fileID);
-            fprintf('%d %s\n',i,theDir(i).name);
+%dirName = {'../icdar1003/SceneTrialTest/sml_01.08.2002'};
+dirName = {'../icdar1003/SceneTrialTest/ryoungt_13.08.2002', '../icdar1003/SceneTrialTest/ryoungt_05.08.2002'};
+
+theK = 90;
+para_size = 1;
+para_fill = 1;
+para_color = 1;
+para_texture = 1;
+
+for j = 1:length(dirName)
+
+    theDir = dir(dirName{j});
+
+    for i = 1:size(theDir,1)
+        if ~theDir(i).isdir
+
+
+            if theDir(i).bytes / 1024 < 800
+
+                path = strcat(dirName{j},'/');
+                path = strcat(path,theDir(i).name);
+       
+                [boxes, height, width] = selectiveSearch(path,theK,para_size,para_fill,para_color,para_texture);
+
+                outputFileName = strcat(dirName{j},'/');
+                outputFileName = strcat(outputFileName, theDir(i).name(1:size(theDir(i).name,2)-4) );
+                outputFileName = strcat(outputFileName,'.txt');
+
+
+                fileID = fopen(outputFileName,'w');
+                fprintf(fileID,'%3d %3d\n',height,width);
+                fprintf(fileID,'%3d %3d %3d %3d\n',boxes');
+                fclose(fileID);
+                fprintf('%d %s\n',i,theDir(i).name);
+            end
         end
     end
+
+
 end

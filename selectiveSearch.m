@@ -1,4 +1,4 @@
-function [ resultBoundingBox, height,width ] = selectiveSearch( imageName )
+function [ resultBoundingBox, height,width ] = selectiveSearch( imageName, theK, para_size, para_fill, para_color,para_texture )
 % selectiveSearch : the function that will do the  selectiveSearch for one
 % image
 %   imageName: the name of the input image
@@ -9,7 +9,7 @@ addpath('Dependencies');
 
 % Thresholds for the Felzenszwalb and Huttenlocher segmentation algorithm.
 % Note that by default, we set minSize = k, and sigma = 0.8.
-k = 200; % controls size of segments of initial segmentation. 
+k = theK; % controls size of segments of initial segmentation. 
 minSize = k;
 sigma = 0.8;
 histSize_color = 25;% how many bins to use in a color histogram
@@ -40,10 +40,7 @@ similarM_fill = getInitialSimilarM_fill(neighbours,sizeM,totalSize,blobBoxes);
 similarM_color = getInitialSimilarM_color(neighbours,histM);
 similarM_texture  = getInitialSimilarM_texture( neighbours,textureM );
 
-para_size = 1;
-para_fill = 1;
-para_color = 1;
-para_texture = 1;
+
 parameter_suite = [para_size,para_fill,para_color,para_texture];
 
 resultBoundingBox = zeros(length(similarM_size) - 2,4);

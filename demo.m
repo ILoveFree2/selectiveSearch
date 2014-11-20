@@ -36,7 +36,7 @@ sigma = 0.8;
 histSize_color = 25;% how many bins to use in a color histogram
 histSize_texture = 10;% how many bins to use in a single texture histogram
 % As an example, use a single image
-images = {'101.jpg'};
+images = {'103.jpg'};
 im = imread(images{1});
 
 
@@ -99,6 +99,6 @@ ShowRectsWithinImage(resultBoundingBox, 5, 5, im);
 
  %drawBoundingboxOnImage( im, resultBoundingBox );
 
- drawBoundingboxOnImageWithRandomColor( im, resultBoundingBox );
+% drawBoundingboxOnImageWithRandomColor( im, resultBoundingBox );
  
  
