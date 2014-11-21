@@ -12,9 +12,9 @@ clc;clear all;
 
 
 %dirName = {'../icdar1003/SceneTrialTest/sml_01.08.2002'};
-dirName = {'../icdar1003/SceneTrialTest/ryoungt_13.08.2002', '../icdar1003/SceneTrialTest/ryoungt_05.08.2002'};
+dirName = {'../icdar1003/SceneTrialTest/ryoungt_13.08.2002', '../icdar1003/SceneTrialTest/ryoungt_05.08.2002','../icdar1003/SceneTrialTest/sml_01.08.2002'};
 
-theK = 90;
+theK = 85;
 para_size = 1;
 para_fill = 1;
 para_color = 1;

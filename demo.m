@@ -1,4 +1,4 @@
-%this is the yiqing's implementation of the selevtive search algorithm
+ls%this is the yiqing's implementation of the selevtive search algorithm
 
 clear;clc;
 
@@ -63,7 +63,7 @@ similarM_texture  = getInitialSimilarM_texture( neighbours,textureM );
 para_size = 1;
 para_fill = 1;
 para_color = 1;
-para_texture = 1;
+para_texture = 0;
 parameter_suite = [para_size,para_fill,para_color,para_texture];
 
 resultBoundingBox = zeros(length(similarM_size) - 2,4);
