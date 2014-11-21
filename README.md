@@ -17,4 +17,8 @@ the original paper
 - but the original implementation in matlab is partially encrypted, so I implementation my own 
 
 
-    
+the withoutTexture branch
+----------------
+I found out that there is some bug in the implementaton of the aniguass.c, so for now, I just ignore the texture part, so I create a new branch called 
+withoutTexture, this branch does not produce bug when testing with large amount of data. To fix the bug is a 
+TODO in the future. 
