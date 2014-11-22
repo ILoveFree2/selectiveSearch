@@ -11,14 +11,14 @@ clc;clear all;
 % the parameter you need to provide
 
 
-%dirName = {'../icdar1003/SceneTrialTest/sml_01.08.2002'};
+
 dirName = {'../icdar1003/SceneTrialTest/ryoungt_13.08.2002', '../icdar1003/SceneTrialTest/ryoungt_05.08.2002','../icdar1003/SceneTrialTest/sml_01.08.2002'};
 
-theK = 85;
+theK = 95;
 para_size = 1;
 para_fill = 1;
 para_color = 1;
-para_texture = 1;
+para_texture = 0;
 
 for j = 1:length(dirName)
 
@@ -38,7 +38,13 @@ for j = 1:length(dirName)
                 outputFileName = strcat(dirName{j},'/');
                 outputFileName = strcat(outputFileName, theDir(i).name(1:size(theDir(i).name,2)-4) );
                 outputFileName = strcat(outputFileName,'.txt');
-
+                
+                %draw the bounding boxes on the image
+                theImage = imread(path);
+                theImage = drawRectangleOnImage(theImage,boxes);
+                outputPath = '../icdar1003/SceneTrialTest/withBoxes/';
+                outputPath = strcat(outputPath,theDir(i).name);
+                imwrite(theImage,outputPath);
 
                 fileID = fopen(outputFileName,'w');
                 fprintf(fileID,'%3d %3d\n',height,width);

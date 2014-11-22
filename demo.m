@@ -98,7 +98,9 @@ resultBoundingBox = deduplicate(resultBoundingBox, imageHeight*duplicateThreshol
 ShowRectsWithinImage(resultBoundingBox, 5, 5, im);
 
  %drawBoundingboxOnImage( im, resultBoundingBox );
-
-% drawBoundingboxOnImageWithRandomColor( im, resultBoundingBox );
+ %drawBoundingboxOnImageWithRandomColor( im, resultBoundingBox );
  
- 
+ imWithBoxes = drawRectangleOnImage(im, resultBoundingBox);
+ imwrite(imWithBoxes,'resultImage.jpg');
+ figure;
+ imshow(imWithBoxes);
