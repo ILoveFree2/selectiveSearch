@@ -14,10 +14,10 @@ clc;clear all;
 
 dirName = {'../icdar1003/SceneTrialTest/ryoungt_13.08.2002', '../icdar1003/SceneTrialTest/ryoungt_05.08.2002','../icdar1003/SceneTrialTest/sml_01.08.2002'};
 
-theK = 95;
+theK = 200;
 para_size = 1;
 para_fill = 1;
-para_color = 1;
+para_color = 2;
 para_texture = 0;
 
 for j = 1:length(dirName)
