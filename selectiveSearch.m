@@ -13,7 +13,7 @@ k = theK; % controls size of segments of initial segmentation.
 minSize = k;
 sigma = 0.8;
 histSize_color = 25;% how many bins to use in a color histogram
-histSize_texture = 10;% how many bins to use in a single texture histogram
+histSize_texture = 25;% how many bins to use in a single texture histogram
 % As an example, use a single image
 images = {imageName};
 im = imread(images{1});
