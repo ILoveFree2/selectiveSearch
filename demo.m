@@ -104,3 +104,5 @@ ShowRectsWithinImage(resultBoundingBox, 5, 5, im);
  imwrite(imWithBoxes,'resultImage.jpg');
  figure;
  imshow(imWithBoxes);
+
+drawRectangleOnDifferentImage(im,resultBoundingBox,4);
