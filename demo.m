@@ -30,13 +30,13 @@ end
 
 % Thresholds for the Felzenszwalb and Huttenlocher segmentation algorithm.
 % Note that by default, we set minSize = k, and sigma = 0.8.
-k = 140; % controls size of segments of initial segmentation. 
+k = 200; % controls size of segments of initial segmentation. 
 minSize = k;
 sigma = 0.8;
 histSize_color = 25;% how many bins to use in a color histogram
-histSize_texture = 10;% how many bins to use in a single texture histogram
+histSize_texture = 25;% how many bins to use in a single texture histogram
 % As an example, use a single image
-images = {'103.jpg'};
+images = {'099.jpg'};
 im = imread(images{1});
 
 
@@ -61,9 +61,9 @@ similarM_color = getInitialSimilarM_color(neighbours,histM);
 similarM_texture  = getInitialSimilarM_texture( neighbours,textureM );
 
 para_size = 1;
-para_fill = 1;
-para_color = 1;
-para_texture = 0;
+para_fill = 2;
+para_color = 0.1;
+para_texture = 1;
 parameter_suite = [para_size,para_fill,para_color,para_texture];
 
 resultBoundingBox = zeros(length(similarM_size) - 2,4);
