@@ -4,7 +4,7 @@ clear;clc;
 
 addpath('Dependencies');
 
-addpath('../Challenge2_Training_Task12_Images');
+
 
 fprintf('  this is the yiqing implementation of the selevtive search algorithm\n');
 
@@ -36,7 +36,7 @@ sigma = 0.8;
 histSize_color = 25;% how many bins to use in a color histogram
 histSize_texture = 25;% how many bins to use in a single texture histogram
 % As an example, use a single image
-images = {'099.jpg'};
+images = {'000015.jpg'};
 im = imread(images{1});
 
 
@@ -48,7 +48,7 @@ imageToSegment = uint8(colourIm * 255);
     
 % Get initial segmentation, boxes, and neighbouring blobs
 [blobIndIm blobBoxes neighbours] = mexFelzenSegmentIndex(imageToSegment, sigma, k, minSize);
-
+originalBoxes = blobBoxes;%this is the original boxes saved after segmentation
 
 sizeM = getSizeMatrix( blobIndIm, neighbours );
 histM  = getHistMatrix( blobIndIm, neighbours, colourIm, histSize_color );
@@ -92,17 +92,20 @@ while(length(similarM_size) > 2)
 end
 
 
-duplicateThreshold = 0.01;%this is the threshold to tell how similar should be classified as similar
-resultBoundingBox = deduplicate(resultBoundingBox, imageHeight*duplicateThreshold, imageWidth*duplicateThreshold);
+%we also need to add the original boxes after segmentation into it
+conbineResult = [originalBoxes;resultBoundingBox];
 
-ShowRectsWithinImage(resultBoundingBox, 5, 5, im);
+duplicateThreshold = 0.01;%this is the threshold to tell how similar should be classified as similar
+conbineResult = deduplicate(conbineResult, imageHeight*duplicateThreshold, imageWidth*duplicateThreshold);
+
+ShowRectsWithinImage(conbineResult, 5, 5, im);
 
  %drawBoundingboxOnImage( im, resultBoundingBox );
  %drawBoundingboxOnImageWithRandomColor( im, resultBoundingBox );
  
- imWithBoxes = drawRectangleOnImage(im, resultBoundingBox);
+ imWithBoxes = drawRectangleOnImage(im, conbineResult);
  imwrite(imWithBoxes,'resultImage.jpg');
  figure;
  imshow(imWithBoxes);
 
-drawRectangleOnDifferentImage(im,resultBoundingBox,4);
+drawRectangleOnDifferentImage(im,conbineResult,4);

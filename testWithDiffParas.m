@@ -3,7 +3,7 @@ k = 200;
 para_size = 1;
 para_fill = 2;
 para_color = 0;
-para_texture = 0.1:0.1:1;
+para_texture = 0:0.5:1.5;
 
 for i = 1 : length(para_texture)
     testWithPara(k,para_size, para_fill, para_color, para_texture(i));

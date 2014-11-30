@@ -1,4 +1,4 @@
-function [ resultBoundingBox, height,width ] = selectiveSearch( imageName, theK, para_size, para_fill, para_color,para_texture )
+function [ conbineResult, height,width ] = selectiveSearch( imageName, theK, para_size, para_fill, para_color,para_texture )
 % selectiveSearch : the function that will do the  selectiveSearch for one
 % image
 %   imageName: the name of the input image
@@ -26,7 +26,7 @@ imageToSegment = uint8(colourIm * 255);
     
 % Get initial segmentation, boxes, and neighbouring blobs
 [blobIndIm blobBoxes neighbours] = mexFelzenSegmentIndex(imageToSegment, sigma, k, minSize);
-
+originalBoxes = blobBoxes;%this is the original boxes saved after segmentation
 
 sizeM = getSizeMatrix( blobIndIm, neighbours );
 histM  = getHistMatrix( blobIndIm, neighbours, colourIm, histSize_color );
@@ -68,8 +68,11 @@ while(length(similarM_size) > 2)
     index = index + 1;
 end
 
+%we also need to add the original boxes after segmentation into it
+conbineResult = [originalBoxes;resultBoundingBox];
+
 duplicateThreshold = 0.01;
-resultBoundingBox = deduplicate(resultBoundingBox, imageHeight*duplicateThreshold, imageWidth*duplicateThreshold);
+conbineResult = deduplicate(conbineResult, imageHeight*duplicateThreshold, imageWidth*duplicateThreshold);
 
 end
 
