@@ -26,8 +26,13 @@ for j = 1:length(dirName)
                 path = strcat(dirName{j},'/');
                 path = strcat(path,theDir(i).name);
        
-                [boxes, height, width] = selectiveSearch(path,theK,para_size,para_fill,para_color,para_texture);
+                [boxes1, ~, ~] = selectiveSearch(path,theK,para_size,para_fill,para_color,para_texture);
+                [boxes2, height, width] = selectiveSearchWithLab(path,theK,para_size,para_fill,para_color,para_texture);
+                boxes = [boxes1; boxes2];
+                duplicateThreshold = 0.01;
+                boxes = deduplicate(boxes, height*duplicateThreshold, width*duplicateThreshold);
 
+                
                 outputFileName = strcat(dirName{j},'/');
                 outputFileName = strcat(outputFileName, theDir(i).name(1:size(theDir(i).name,2)-4) );
                 outputFileName = strcat(outputFileName,'.txt');
