@@ -43,15 +43,15 @@ Temporary Items
 .apdisk
 
 #zip files
-.zip
+*.zip
 
 #matlab mex files
-.mexw32
+*.mexw32
 
 #matlab tmp files
-.asv
+*.asv
 
 
-.jpg
-.xml
-.m~
+*.jpg
+*.xml
+*.m~
